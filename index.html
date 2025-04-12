@@ -307,30 +307,34 @@
         const mobileMenu = document.querySelector('.mobile-menu');
         const navLinks = document.querySelector('.nav-links');
         
-        mobileMenu.addEventListener('click', function() {
+        // Function to close menu
+        function closeMenu() {
+            navLinks.classList.remove('active');
+        }
+
+        mobileMenu.addEventListener('click', function(e) {
+            e.stopPropagation();
             navLinks.classList.toggle('active');
-            // Close menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (!event.target.closest('.nav-links') && !event.target.closest('.mobile-menu')) {
-                    navLinks.classList.remove('active');
-                }
-            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', function(e) {
+            if (!e.target.closest('.nav-links') && !e.target.closest('.mobile-menu')) {
+                closeMenu();
+            }
         });
 
         // Close menu when clicking a link
         document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', function() {
-                navLinks.classList.remove('active');
-            });
-        });
-
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetId = this.getAttribute('href');
+                closeMenu();
+                setTimeout(() => {
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }, 300);
             });
         });
     </script>
