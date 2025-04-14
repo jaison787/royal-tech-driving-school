@@ -2,7 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#1a237e">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
     <title>Royal-Tech Driving School | Professional Driving Lessons in [Your City]</title>
     <meta name="description" content="Royal-Tech Driving School offers professional driving lessons, license assistance, and vehicle services. Expert instructors, modern vehicles, and high pass rates. Book your lesson today!">
     <meta name="keywords" content="driving school, driving lessons, driving instructor, learn to drive, driving license, vehicle registration, vehicle insurance, [Your City] driving school">
@@ -83,22 +87,34 @@
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="video-background">
+    <section class="hero">
+        <div class="parallax-image">
             <video autoplay muted loop playsinline>
-                <source src="videos/driving-school.mp4" type="video/mp4">
-                Your browser does not support the video tag.
+                <source src="assets/videos/hero-bg.mp4" type="video/mp4">
             </video>
-            <div class="video-overlay"></div>
         </div>
-        <div class="container">
-            <h1>Start Your Journey to Safe Driving</h1>
-            <p>Professional instructors, modern vehicles, and comprehensive training programs designed for your success</p>
+        <div class="parallax-overlay"></div>
+        <div class="parallax-content">
+            <h1>Welcome to Our Driving School</h1>
+            <p>Professional driving lessons for all skill levels</p>
             <div class="hero-buttons">
-                <a href="#contact" class="cta-button">Book Your First Lesson</a>
-                <a href="#courses" class="cta-button secondary">Explore Our Courses</a>
+                <a href="#contact" class="cta-button">Get Started</a>
+                <a href="#courses" class="cta-button secondary">View Courses</a>
             </div>
+        </div>
+    </section>
+
+    <!-- New Parallax Section -->
+    <section class="parallax-section" style="background-image: url('https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80');">
+        <div class="parallax-overlay"></div>
+        <div class="parallax-content">
+            <h2>Why Choose Us?</h2>
+            <p>Experience the difference with our professional instructors and modern teaching methods</p>
             <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">1000+</span>
+                    <span class="stat-label">Students Trained</span>
+                </div>
                 <div class="stat-item">
                     <span class="stat-number">98%</span>
                     <span class="stat-label">Pass Rate</span>
@@ -106,10 +122,6 @@
                 <div class="stat-item">
                     <span class="stat-number">15+</span>
                     <span class="stat-label">Years Experience</span>
-                </div>
-                <div class="stat-item">
-                    <span class="stat-number">5000+</span>
-                    <span class="stat-label">Students Trained</span>
                 </div>
             </div>
         </div>
