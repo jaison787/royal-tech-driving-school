@@ -1,220 +1,276 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Royal-Tech Driving School</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Royal-Tech Driving School</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <script src="script.js" defer></script>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <a href="#" class="logo">
-                <img src="images/logo.png" alt="Royal-Tech Driving Institute Logo">
-                <div class="logo-text">
-                    <h1>ROYAL-TECH</h1>
-                    <p>DRIVING INSTITUTE</p>
-                    <p>PAZHANJI CHIRAKKAL</p>
-                    <p>( GOVT APPROVED ) LNO : KL082022DSL00006</p>
-                </div>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="#instructors">Instructors</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact" class="nav-cta">Contact Us</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <a href="#" class="logo">
+        <img src="images/logo.png" alt="Royal-Tech Driving Institute Logo" />
+        <div class="logo-text">
+          <h1>ROYAL-TECH</h1>
+          <p>DRIVING INSTITUTE</p>
+          <p>PAZHANJI CHIRAKKAL</p>
+          <p>( GOVT APPROVED ) LNO : KL082022DSL00006</p>
         </div>
-    </nav>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#courses">Courses</a></li>
+        <li><a href="#services">Services</a></li> <!-- Added Services link -->
+        <li><a href="#instructors">Instructors</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+      </ul>
+      <div class="mobile-menu">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="video-background">
-            <video autoplay muted loop playsinline>
-                <source src="videos/hero-bg.mp4" type="video/mp4">
-                Your browser does not support the video tag.
-            </video>
-            <div class="overlay"></div>
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="video-background">
+      <video autoplay muted loop playsinline>
+        <source src="videos/hero-bg.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+      <div class="overlay"></div>
+    </div>
+    <div class="hero-content">
+      <h1>WELCOME TO ROYAL-TECH DRIVING SCHOOL</h1>
+      <p class="tagline">
+        YOUR JOURNEY TO <span class="highlight">SAFE DRIVING</span> STARTS HERE!
+      </p>
+      <div class="hero-buttons">
+        <a href="#contact" class="cta-button primary">BOOK YOUR SLOT</a>
+        <a href="#about" class="cta-button secondary">ABOUT US</a>
+      </div>
+      <div class="stats-container">
+        <div class="stat-card">
+          <i class="fas fa-clock"></i>
+          <h3>25+ Years Experience</h3>
+          <p>Expert driving school with over 25 years of experience.</p>
         </div>
-        <div class="hero-content">
-            <h1>WELCOME TO ROYAL-TECH DRIVING SCHOOL</h1>
-            <p class="tagline">YOUR JOURNEY TO <span class="highlight">SAFE DRIVING</span> STARTS HERE!</p>
-            <div class="hero-buttons">
-                <a href="#contact" class="cta-button primary">BOOK YOUR SLOT</a>
-                <a href="#about" class="cta-button secondary">ABOUT US</a>
-            </div>
-            <div class="stats-container">
-                <div class="stat-card">
-                    <i class="fas fa-clock"></i>
-                    <h3>25+ Years Experience</h3>
-                    <p>Expert driving school with over 25 years of experience.</p>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-user-tie"></i>
-                    <h3>Expert Instructor</h3>
-                    <p>Experienced and certified driving instructor.</p>
-                </div>
-                <div class="stat-card">
-                    <i class="fas fa-users"></i>
-                    <h3>2K+ Students</h3>
-                    <p>Successfully trained over 2,000 students.</p>
-                </div>
-            </div>
+        <div class="stat-card">
+          <i class="fas fa-user-tie"></i>
+          <h3>Expert Instructor</h3>
+          <p>Experienced and certified driving instructor.</p>
         </div>
-    </section>
+        <div class="stat-card">
+          <i class="fas fa-users"></i>
+          <h3>2K+ Students</h3>
+          <p>Successfully trained over 2,000 students.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Courses Section -->
-    <section id="courses" class="courses">
-        <div class="container">
-            <h2>Our Courses</h2>
-            <p class="section-subtitle">Choose the perfect program for your driving journey</p>
-            <div class="course-grid">
-                <div class="course-card">
-                    <i class="fas fa-car"></i>
-                    <h3>Beginner's Course</h3>
-                    <p>Perfect for first-time drivers. Learn the basics of vehicle control and road safety.</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Basic vehicle control</li>
-                        <li><i class="fas fa-check"></i> Road rules and signs</li>
-                        <li><i class="fas fa-check"></i> Parking techniques</li>
-                        <li><i class="fas fa-check"></i> 10 hours of practice</li>
-                    </ul>
-                </div>
-                <div class="course-card">
-                    <i class="fas fa-road"></i>
-                    <h3>Highway Driving</h3>
-                    <p>Master highway driving skills and build confidence for long-distance travel.</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Highway navigation</li>
-                        <li><i class="fas fa-check"></i> Lane changing</li>
-                        <li><i class="fas fa-check"></i> Speed management</li>
-                        <li><i class="fas fa-check"></i> 15 hours of practice</li>
-                    </ul>
-                </div>
-                <div class="course-card">
-                    <i class="fas fa-traffic-light"></i>
-                    <h3>Test Preparation</h3>
-                    <p>Comprehensive preparation for your driving test with practice tests and mock exams.</p>
-                    <ul>
-                        <li><i class="fas fa-check"></i> Mock driving tests</li>
-                        <li><i class="fas fa-check"></i> Test route practice</li>
-                        <li><i class="fas fa-check"></i> Common mistakes</li>
-                        <li><i class="fas fa-check"></i> 20 hours of practice</li>
-                    </ul>
-                </div>
-            </div>
+  <!-- Courses Section -->
+  <section id="courses" class="courses">
+    <div class="container">
+      <h2>Our Courses</h2>
+      <p class="section-subtitle">Choose the perfect program for your driving journey</p>
+      <div class="course-grid">
+        <div class="course-card">
+          <i class="fas fa-car"></i>
+          <h3>Beginner's Course</h3>
+          <p>
+            Perfect for first-time drivers. Learn the basics of vehicle control
+            and road safety.
+          </p>
+          <ul>
+            <li><i class="fas fa-check"></i> Basic vehicle control</li>
+            <li><i class="fas fa-check"></i> Road rules and signs</li>
+            <li><i class="fas fa-check"></i> Parking techniques</li>
+            <li><i class="fas fa-check"></i> 10 hours of practice</li>
+          </ul>
         </div>
-    </section>
+        <div class="course-card">
+          <i class="fas fa-road"></i>
+          <h3>Highway Driving</h3>
+          <p>Master highway driving skills and build confidence for long-distance travel.</p>
+          <ul>
+            <li><i class="fas fa-check"></i> Highway navigation</li>
+            <li><i class="fas fa-check"></i> Lane changing</li>
+            <li><i class="fas fa-check"></i> Speed management</li>
+            <li><i class="fas fa-check"></i> 15 hours of practice</li>
+          </ul>
+        </div>
+        <div class="course-card">
+          <i class="fas fa-traffic-light"></i>
+          <h3>Test Preparation</h3>
+          <p>
+            Comprehensive preparation for your driving test with practice tests
+            and mock exams.
+          </p>
+          <ul>
+            <li><i class="fas fa-check"></i> Mock driving tests</li>
+            <li><i class="fas fa-check"></i> Test route practice</li>
+            <li><i class="fas fa-check"></i> Common mistakes</li>
+            <li><i class="fas fa-check"></i> 20 hours of practice</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Instructors Section -->
-    <section id="instructors" class="instructors">
-        <div class="container">
-            <h2>Our Expert Instructors</h2>
-            <p class="section-subtitle">Learn from the best in the industry</p>
-            <div class="instructor-grid">
-                <div class="instructor-card">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd2298fdc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="John Smith">
-                    <h3>John Smith</h3>
-                    <p>Senior Instructor</p>
-                    <p>15+ years experience</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="instructor-card">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Sarah Johnson">
-                    <h3>Sarah Johnson</h3>
-                    <p>Defensive Driving Expert</p>
-                    <p>12+ years experience</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-                <div class="instructor-card">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Mike Davis">
-                    <h3>Mike Davis</h3>
-                    <p>Test Preparation Specialist</p>
-                    <p>10+ years experience</p>
-                    <div class="social-links">
-                        <a href="#"><i class="fab fa-linkedin"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
-            </div>
+  <!-- Other Services Section -->
+  <section id="services" class="services">
+    <div class="container">
+      <h2>Other Services</h2>
+      <p class="section-subtitle">
+        Additional services to make your driving experience hassle-free
+      </p>
+      <div class="services-grid">
+        <div class="service-card">
+          <i class="fas fa-file-alt"></i>
+          <h3>Vehicle Registration</h3>
+          <p>Assistance with new vehicle registration and documentation.</p>
         </div>
-    </section>
+        <div class="service-card">
+          <i class="fas fa-file-invoice-dollar"></i>
+          <h3>Insurance Renewal</h3>
+          <p>Quick and easy renewal of your vehicle insurance policies.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-car-side"></i>
+          <h3>Vehicle Rental</h3>
+          <p>Rent vehicles for practice or personal use at affordable rates.</p>
+        </div>
+        <div class="service-card">
+          <i class="fas fa-redo-alt"></i>
+          <h3>Refresher Courses</h3>
+          <p>Brush up your driving skills with refresher courses designed for experienced drivers.</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <h2>Pricing Plans</h2>
-            <p class="section-subtitle">Affordable packages to suit your needs</p>
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <h3>Basic</h3>
-                    <p class="price">₹4,999</p>
-                    <ul>
-                        <li>5 Driving Lessons</li>
-                        <li>Basic Road Safety</li>
-                        <li>Vehicle Control</li>
-                    </ul>
-                    <a href="#contact" class="cta-button">Get Started</a>
-                </div>
-                <div class="pricing-card popular">
-                    <h3>Standard</h3>
-                    <p class="price">₹7,999</p>
-                    <ul>
-                        <li>10 Driving Lessons</li>
-                        <li>Advanced Road Safety</li>
-                        <li>Highway Driving</li>
-                    </ul>
-                    <a href="#contact" class="cta-button">Get Started</a>
-                </div>
-                <div class="pricing-card">
-                    <h3>Premium</h3>
-                    <p class="price">₹9,999</p>
-                    <ul>
-                        <li>15 Driving Lessons</li>
-                        <li>Defensive Driving</li>
-                        <li>Test Preparation</li>
-                    </ul>
-                    <a href="#contact" class="cta-button">Get Started</a>
-                </div>
-            </div>
+  <!-- Instructors Section -->
+  <section id="instructors" class="instructors">
+    <div class="container">
+      <h2>Our Expert Instructors</h2>
+      <p class="section-subtitle">Learn from the best in the industry</p>
+      <div class="instructor-grid">
+        <div class="instructor-card">
+          <img
+            src="https://images.unsplash.com/photo-1507003211169-0a1dd2298fdc?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            alt="John Smith"
+          />
+          <h3>John Smith</h3>
+          <p>Senior Instructor</p>
+          <p>15+ years experience</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
         </div>
-    </section>
+        <div class="instructor-card">
+          <img
+            src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            alt="Sarah Johnson"
+          />
+          <h3>Sarah Johnson</h3>
+          <p>Defensive Driving Expert</p>
+          <p>12+ years experience</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+        <div class="instructor-card">
+          <img
+            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60"
+            alt="Mike Davis"
+          />
+          <h3>Mike Davis</h3>
+          <p>Test Preparation Specialist</p>
+          <p>10+ years experience</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <h2>Contact Us</h2>
-            <p class="section-subtitle">Book your lessons today!</p>
-            <form class="contact-form">
-                <input type="text" placeholder="Your Name">
-                <input type="email" placeholder="Your Email">
-                <textarea placeholder="Your Message"></textarea>
-                <button type="submit" class="cta-button">Send Message</button>
-            </form>
+  <!-- Pricing Section -->
+  <section id="pricing" class="pricing">
+    <div class="container">
+      <h2>Pricing Plans</h2>
+      <p class="section-subtitle">Affordable packages to suit your needs</p>
+      <div class="pricing-grid">
+        <div class="pricing-card">
+          <h3>Basic</h3>
+          <p class="price">₹4,999</p>
+          <ul>
+            <li>5 Driving Lessons</li>
+            <li>Basic Road Safety</li>
+            <li>Vehicle Control</li>
+          </ul>
+          <a href="#contact" class="cta-button">Get Started</a>
         </div>
-    </section>
+        <div class="pricing-card popular">
+          <h3>Standard</h3>
+          <p class="price">₹7,999</p>
+          <ul>
+            <li>10 Driving Lessons</li>
+            <li>Advanced Road Safety</li>
+            <li>Highway Driving</li>
+          </ul>
+          <a href="#contact" class="cta-button">Get Started</a>
+        </div>
+        <div class="pricing-card">
+          <h3>Premium</h3>
+          <p class="price">₹9,999</p>
+          <ul>
+            <li>15 Driving Lessons</li>
+            <li>Defensive Driving</li>
+            <li>Test Preparation</li>
+          </ul>
+          <a href="#contact" class="cta-button">Get Started</a>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2025 Royal-Tech Driving School. All rights reserved.</p>
-        </div>
-    </footer>
+  <!-- Contact Section -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <h2>Contact Us</h2>
+      <p class="section-subtitle">Book your lessons today!</p>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit" class="cta-button">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 Royal-Tech Driving School. All rights reserved.</p>
+    </div>
+  </footer>
 </body>
 </html>
