@@ -13,6 +13,19 @@
     <meta name="author" content="Royal-Tech Driving School">
     <meta name="robots" content="index, follow">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="images/logo.ico">
+    <link rel="shortcut icon" type="image/x-icon" href="images/logo.ico">
+    
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="https://fonts.gstatic.com/s/inter/v12/UcCO3FwrK3iLTeHuS_fvQtMwCp50KnMw2boKoduKmMEVuLyfAZ9hiA.woff2" as="font" type="font/woff2" crossorigin>
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <!-- Open Graph / Social Media Meta Tags -->
     <meta property="og:title" content="Royal-Tech Driving School | Professional Driving Lessons">
     <meta property="og:description" content="Learn to drive with expert instructors at Royal-Tech Driving School. High pass rates, modern vehicles, and comprehensive training programs.">
@@ -59,10 +72,8 @@
     }
     </script>
     
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="canonical" href="https://royal-tech.com">
+    <script src="script.js" defer></script>
 </head>
 <body>
     <!-- Navigation -->
@@ -70,36 +81,78 @@
         <div class="container">
             <div class="logo">
                 <a href="#home">
-                    <img src="images/logo.png" alt="Royal-Tech Logo" class="logo-img">
+                    <img src="images/logo.png" alt="Royal-Tech Driving Institute Logo" class="logo-img">
+                    <div class="logo-text-container">
+                        <h1 class="logo-title">ROYAL-TECH</h1>
+                        <p class="logo-subtitle">DRIVING INSTITUTE</p>
+                        <p class="logo-location">PAZHANJI CHIRAKKAL</p>
+                        <p class="logo-license">( GOVT APPROVED ) LNO : KL082022DSL00006</p>
+                    </div>
                 </a>
             </div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#courses">Courses</a></li>
-                <li><a href="#instructors">Instructors</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <div class="mobile-menu">
-                <i class="fas fa-bars"></i>
+            <div class="nav-wrapper">
+                <ul class="nav-links">
+                    <li><a href="#home" class="active">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#instructors">Instructors</a></li>
+                    <li><a href="#pricing">Pricing</a></li>
+                    <li><a href="#contact" class="nav-cta">Contact Us</a></li>
+                </ul>
+                <div class="mobile-menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section -->
     <section class="hero">
-        <div class="parallax-image">
+        <div class="video-background">
             <video autoplay muted loop playsinline>
-                <source src="assets/videos/hero-bg.mp4" type="video/mp4">
+                <source src="videos/hero-bg.mp4" type="video/mp4">
+                Your browser does not support the video tag.
             </video>
+            <div class="overlay"></div>
         </div>
-        <div class="parallax-overlay"></div>
-        <div class="parallax-content">
-            <h1>Welcome to Our Driving School</h1>
-            <p>Professional driving lessons for all skill levels</p>
+        <div class="hero-content">
+            <h1>WELCOME TO ROYAL-TECH DRIVING SCHOOL</h1>
+            <div class="tagline">
+                <p>YOUR JOURNEY TO <span class="highlight">SAFE DRIVING</span> STARTS HERE!</p>
+            </div>
             <div class="hero-buttons">
-                <a href="#contact" class="cta-button">Get Started</a>
-                <a href="#courses" class="cta-button secondary">View Courses</a>
+                <a href="#contact" class="cta-button primary">BOOK YOUR SLOT</a>
+                <a href="#about" class="cta-button secondary">ABOUT US</a>
+            </div>
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>25+ Years Experience</h3>
+                        <p>Expert driving school with over 25 years of experience.</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>Expert Instructor</h3>
+                        <p>Experienced and certified driving instructor.</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div class="stat-content">
+                        <h3>2K+ Students</h3>
+                        <p>Successfully trained over 2,000 students.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
