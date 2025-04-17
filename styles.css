@@ -547,85 +547,143 @@ ul {
   margin-bottom: 30px;
 }
 
-.pricing-grid {
+/* Pricing Table Styles */
+.pricing-table {
+  max-width: 900px;
+  margin: 0 auto 40px;
+  overflow-x: auto;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  background-color: #fff;
+}
+
+.pricing-table table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.pricing-table th, 
+.pricing-table td {
+  padding: 15px;
+  text-align: left;
+  border-bottom: 1px solid #eee;
+}
+
+.pricing-table th {
+  background-color: #1a237e;
+  color: #fff;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9em;
+}
+
+.pricing-table th:first-child {
+  border-top-left-radius: 15px;
+}
+
+.pricing-table th:last-child {
+  border-top-right-radius: 15px;
+}
+
+.pricing-table tr:last-child td {
+  border-bottom: none;
+}
+
+.pricing-table tr:hover {
+  background-color: #f9f9f9;
+}
+
+.pricing-table td:nth-child(2) {
+  font-weight: 700;
+  color: #1a237e;
+}
+
+/* Additional Fees Styles */
+.additional-fees {
+  margin: 40px auto;
+  max-width: 1000px;
+}
+
+.additional-fees h3 {
+  text-align: center;
+  color: #1a237e;
+  margin-bottom: 30px;
+  font-size: 1.8em;
+}
+
+.fees-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px;
 }
 
-.pricing-card {
+.fee-card {
   background-color: #fff;
   border-radius: 15px;
-  padding: 40px 25px;
-  text-align: center;
+  padding: 25px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   border: 1px solid rgba(0, 0, 0, 0.05);
-  cursor: default;
-  position: relative;
-  display: flex;
-  flex-direction: column;
 }
 
-.pricing-card.popular {
-  transform: scale(1.05);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
-}
-
-.pricing-card.popular::before {
-  content: 'Popular';
-  position: absolute;
-  top: 0;
-  right: 20px;
-  background-color: #ffc107;
-  color: #1a237e;
-  padding: 8px 15px;
-  font-size: 0.8em;
-  font-weight: 600;
-  border-radius: 0 0 10px 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-}
-
-.pricing-card:hover {
-  transform: translateY(-10px);
+.fee-card:hover {
+  transform: translateY(-5px);
   box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
 }
 
-.pricing-card h3 {
-  margin: 0 0 10px;
+.fee-card h4 {
   color: #1a237e;
-  font-size: 1.8em;
+  font-size: 1.3em;
+  margin: 0 0 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ffc107;
 }
 
-.pricing-card .price {
-  font-size: 3em;
-  font-weight: 700;
-  color: #333;
-  margin: 20px 0;
-  font-family: 'Inter', sans-serif;
-}
-
-.pricing-card ul {
-  flex: 1;
+.fee-card ul {
   list-style: none;
   padding: 0;
-  margin: 0 0 30px;
 }
 
-.pricing-card li {
+.fee-card li {
   padding: 10px 0;
   border-bottom: 1px solid #eee;
   color: #555;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.pricing-card li:last-child {
+.fee-card li:last-child {
   border-bottom: none;
 }
 
-.pricing-card .cta-button {
+.fee-card li span {
+  font-weight: 700;
+  color: #1a237e;
+}
+
+.fee-card li small {
+  display: block;
+  color: #777;
+  font-size: 0.85em;
   width: 100%;
+}
+
+.pricing-note {
   text-align: center;
-  border-radius: 30px;
+  margin-top: 40px;
+  color: #666;
+}
+
+.contact-link {
+  color: #1a237e;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: #ffc107;
 }
 
 /* Gallery Section */
@@ -872,7 +930,7 @@ ul {
   .course-grid,
   .services-grid,
   .instructor-grid,
-  .pricing-grid {
+  .pricing-table {
     grid-template-columns: 1fr !important;
   }
 
@@ -894,6 +952,22 @@ ul {
   .gallery-item.large {
     grid-column: span 6;
     grid-row: span 3;
+  }
+
+  .pricing-table {
+    margin: 0 0 30px;
+    border-radius: 10px;
+  }
+  
+  .pricing-table th, 
+  .pricing-table td {
+    padding: 10px;
+    font-size: 0.9em;
+  }
+  
+  .fees-container {
+    grid-template-columns: 1fr;
+    gap: 20px;
   }
 }
 
