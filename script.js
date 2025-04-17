@@ -1,4 +1,42 @@
 document.addEventListener('DOMContentLoaded', function () {
+    // Add animate-on-scroll class to relevant elements
+    const sectionElements = document.querySelectorAll('section');
+    const headings = document.querySelectorAll('section h2');
+    const sectionSubtitles = document.querySelectorAll('.section-subtitle');
+    const cards = document.querySelectorAll('.course-card, .service-card, .instructor-card, .pricing-card, .gallery-item');
+    
+    // Add animation classes
+    headings.forEach(heading => heading.classList.add('animate-on-scroll'));
+    sectionSubtitles.forEach(subtitle => subtitle.classList.add('animate-on-scroll'));
+    cards.forEach((card, index) => {
+        card.classList.add('animate-on-scroll');
+        card.style.transitionDelay = `${index % 3 * 0.1}s`;
+    });
+    
+    // Check if element is in viewport
+    function isInViewport(element) {
+        const rect = element.getBoundingClientRect();
+        return (
+            rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.85 &&
+            rect.bottom >= 0
+        );
+    }
+    
+    // Activate animations when scrolling
+    function activateAnimations() {
+        document.querySelectorAll('.animate-on-scroll').forEach(element => {
+            if (isInViewport(element)) {
+                element.classList.add('active');
+            }
+        });
+    }
+    
+    // Initial check
+    activateAnimations();
+    
+    // Check on scroll
+    window.addEventListener('scroll', activateAnimations);
+
     // Parallax Effect
     const parallaxElements = document.querySelectorAll('.parallax-section, .hero');
 
