@@ -178,7 +178,7 @@ ul {
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.8), rgba(26, 35, 126, 0.8));
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(26, 35, 126, 0.7));
   z-index: 0;
 }
 
@@ -199,43 +199,19 @@ ul {
 }
 
 .hero-text h1 {
-  font-size: 3.8em;
+  font-size: 4em;
   margin-bottom: 20px;
   color: #ffffff;
   font-weight: 800;
   letter-spacing: 2px;
   line-height: 1.2;
-  text-shadow: 
-    0 1px 0 #ccc,
-    0 2px 0 #c9c9c9,
-    0 3px 0 #bbb,
-    0 4px 0 #b9b9b9,
-    0 5px 0 #aaa,
-    0 6px 1px rgba(0,0,0,.1),
-    0 0 5px rgba(0,0,0,.1),
-    0 1px 3px rgba(0,0,0,.3),
-    0 3px 5px rgba(0,0,0,.2),
-    0 5px 10px rgba(0,0,0,.25),
-    0 10px 10px rgba(0,0,0,.2),
-    0 20px 20px rgba(0,0,0,.15);
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 .hero-text .highlight {
   color: #ffc107;
   font-weight: 800;
-  text-shadow: 
-    0 1px 0 #ffdb70,
-    0 2px 0 #ffcc00,
-    0 3px 0 #b8a300,
-    0 4px 0 #a08700,
-    0 5px 0 #846f00,
-    0 6px 1px rgba(0,0,0,.1),
-    0 0 5px rgba(0,0,0,.1),
-    0 1px 3px rgba(0,0,0,.3),
-    0 3px 5px rgba(0,0,0,.2),
-    0 5px 10px rgba(0,0,0,.25),
-    0 10px 10px rgba(0,0,0,.2),
-    0 20px 20px rgba(0,0,0,.15);
+  text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.8), 0 0 5px rgba(0, 0, 0, 0.5);
 }
 
 /* Text shadow effect for better visibility */
@@ -252,9 +228,9 @@ ul {
 }
 
 .hero-tagline {
-  font-size: 1.4em;
+  font-size: 1.5em;
   margin-bottom: 30px;
-  text-shadow: 0 3px 10px rgba(0, 0, 0, 0.9);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   font-weight: 400;
   max-width: 700px;
   margin-left: auto;
