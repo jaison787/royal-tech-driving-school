@@ -115,7 +115,7 @@
         <div class="carousel">
           <!-- Slide 1 -->
           <div class="carousel-slide">
-            <img src="images/gallery/student-driving.jpg" alt="Student Learning to Drive">
+            <img src="images/gallery/student-driving.jpg" alt="Student Learning to Drive" loading="lazy" width="800" height="600">
             <div class="carousel-caption">
               <h3>Professional Training</h3>
               <p>Expert instructors teaching safe driving practices</p>
@@ -124,7 +124,7 @@
           
           <!-- Slide 2 -->
           <div class="carousel-slide">
-            <img src="images/gallery/classroom.jpg" alt="Classroom Training">
+            <img src="images/gallery/classroom.jpg" alt="Classroom Training" loading="lazy" width="800" height="600">
             <div class="carousel-caption">
               <h3>Classroom Sessions</h3>
               <p>Comprehensive theoretical training</p>
@@ -133,7 +133,7 @@
           
           <!-- Slide 3 -->
           <div class="carousel-slide">
-            <img src="images/gallery/car-fleet.jpg" alt="Our Car Fleet">
+            <img src="images/gallery/car-fleet.jpg" alt="Our Car Fleet" loading="lazy" width="800" height="600">
             <div class="carousel-caption">
               <h3>Modern Fleet</h3>
               <p>Well-maintained training vehicles</p>
@@ -142,7 +142,7 @@
           
           <!-- Slide 4 -->
           <div class="carousel-slide">
-            <img src="images/gallery/success.jpg" alt="Successful Students">
+            <img src="images/gallery/success.jpg" alt="Successful Students" loading="lazy" width="800" height="600">
             <div class="carousel-caption">
               <h3>Success Stories</h3>
               <p>Our proud graduates</p>
@@ -151,7 +151,7 @@
           
           <!-- Slide 5 -->
           <div class="carousel-slide">
-            <img src="images/gallery/simulation.jpg" alt="Driving Simulation">
+            <img src="images/gallery/simulation.jpg" alt="Driving Simulation" loading="lazy" width="800" height="600">
             <div class="carousel-caption">
               <h3>Advanced Training</h3>
               <p>State-of-the-art simulation equipment</p>
@@ -160,7 +160,7 @@
           
           <!-- Slide 6 -->
           <div class="carousel-slide">
-            <img src="images/gallery/certificate.jpg" alt="Certification">
+            <img src="images/gallery/certificate.jpg" alt="Certification" loading="lazy" width="800" height="600">
             <div class="carousel-caption">
               <h3>Certification</h3>
               <p>Internationally recognized certifications</p>
@@ -679,6 +679,125 @@
       
       .navbar .logo-text p {
         font-size: 0.7rem;
+      }
+    }
+
+    .carousel-container {
+      position: relative;
+      max-width: 100%;
+      overflow: hidden;
+      margin: 2rem auto;
+    }
+
+    .carousel {
+      display: flex;
+      scroll-snap-type: x mandatory;
+      overflow-x: scroll;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none; /* IE/Edge */
+    }
+
+    .carousel::-webkit-scrollbar {
+      display: none; /* Chrome/Safari/Opera */
+    }
+
+    .carousel-slide {
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+      position: relative;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .carousel-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 40px;
+      height: 40px;
+      background: rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      transition: background-color 0.3s;
+    }
+
+    .carousel-nav:hover {
+      background: white;
+    }
+
+    .carousel-nav.prev {
+      left: 1rem;
+    }
+
+    .carousel-nav.next {
+      right: 1rem;
+    }
+
+    .carousel-dots {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 1rem;
+    }
+
+    .carousel-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #ccc;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    .carousel-dot.active {
+      background: #ffc107;
+    }
+
+    @media (max-width: 768px) {
+      .carousel-nav {
+        width: 30px;
+        height: 30px;
+      }
+
+      .carousel-caption {
+        padding: 0.5rem;
+      }
+
+      .carousel-caption h3 {
+        font-size: 1rem;
+        margin: 0;
+      }
+
+      .carousel-caption p {
+        font-size: 0.8rem;
+        margin: 0.2rem 0 0;
+      }
+
+      .carousel-slide img {
+        max-height: 400px; /* Smaller height on mobile */
       }
     }
   </style>
