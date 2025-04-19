@@ -111,176 +111,74 @@
       <h2>Gallery</h2>
       <p class="section-subtitle">Take a look at our facilities and happy students</p>
       
-      <div class="gallery-grid">
-        <div class="gallery-item">
-          <img src="./images/gallery/student-driving.jpg" 
-               alt="Student Learning to Drive" 
-               loading="lazy"
-               onerror="this.onerror=null; this.src='./images/gallery/placeholder.jpg'">
-          <div class="gallery-caption">
-            <h3>Professional Training</h3>
-            <p>Expert instructors teaching safe driving practices</p>
+      <div class="carousel-container">
+        <div class="carousel">
+          <div class="carousel-slide">
+            <img src="images/gallery/student-driving.jpg" alt="Student Learning to Drive">
+            <div class="carousel-caption">
+              <h3>Professional Training</h3>
+              <p>Expert instructors teaching safe driving practices</p>
+            </div>
+          </div>
+          
+          <div class="carousel-slide">
+            <img src="images/gallery/classroom.jpg" alt="Classroom Training">
+            <div class="carousel-caption">
+              <h3>Classroom Sessions</h3>
+              <p>Comprehensive theoretical training</p>
+            </div>
+          </div>
+          
+          <div class="carousel-slide">
+            <img src="images/gallery/car-fleet.jpg" alt="Our Car Fleet">
+            <div class="carousel-caption">
+              <h3>Modern Fleet</h3>
+              <p>Well-maintained training vehicles</p>
+            </div>
+          </div>
+          
+          <div class="carousel-slide">
+            <img src="images/gallery/success.jpg" alt="Successful Students">
+            <div class="carousel-caption">
+              <h3>Success Stories</h3>
+              <p>Our proud graduates</p>
+            </div>
+          </div>
+          
+          <div class="carousel-slide">
+            <img src="images/gallery/simulation.jpg" alt="Driving Simulation">
+            <div class="carousel-caption">
+              <h3>Advanced Training</h3>
+              <p>State-of-the-art simulation equipment</p>
+            </div>
+          </div>
+          
+          <div class="carousel-slide">
+            <img src="images/gallery/certificate.jpg" alt="Certification">
+            <div class="carousel-caption">
+              <h3>Certification</h3>
+              <p>Internationally recognized certifications</p>
+            </div>
           </div>
         </div>
         
-        <div class="gallery-item">
-          <img src="./images/gallery/classroom.jpg" 
-               alt="Classroom Training" 
-               loading="lazy"
-               onerror="this.onerror=null; this.src='./images/gallery/placeholder.jpg'">
-          <div class="gallery-caption">
-            <h3>Classroom Sessions</h3>
-            <p>Comprehensive theoretical training</p>
-          </div>
-        </div>
+        <button class="carousel-nav prev" aria-label="Previous slide">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="carousel-nav next" aria-label="Next slide">
+          <i class="fas fa-chevron-right"></i>
+        </button>
         
-        <div class="gallery-item">
-          <img src="./images/gallery/car-fleet.jpg" 
-               alt="Our Car Fleet" 
-               loading="lazy"
-               onerror="this.onerror=null; this.src='./images/gallery/placeholder.jpg'">
-          <div class="gallery-caption">
-            <h3>Modern Fleet</h3>
-            <p>Well-maintained training vehicles</p>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="./images/gallery/success.jpg" 
-               alt="Successful Students" 
-               loading="lazy"
-               onerror="this.onerror=null; this.src='./images/gallery/placeholder.jpg'">
-          <div class="gallery-caption">
-            <h3>Success Stories</h3>
-            <p>Our proud graduates</p>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="./images/gallery/simulation.jpg" 
-               alt="Driving Simulation" 
-               loading="lazy"
-               onerror="this.onerror=null; this.src='./images/gallery/placeholder.jpg'">
-          <div class="gallery-caption">
-            <h3>Advanced Training</h3>
-            <p>State-of-the-art simulation equipment</p>
-          </div>
-        </div>
-        
-        <div class="gallery-item">
-          <img src="./images/gallery/certificate.jpg" 
-               alt="Certification" 
-               loading="lazy"
-               onerror="this.onerror=null; this.src='./images/gallery/placeholder.jpg'">
-          <div class="gallery-caption">
-            <h3>Certification</h3>
-            <p>Internationally recognized certifications</p>
-          </div>
+        <div class="carousel-dots">
+          <button class="carousel-dot active" aria-label="Go to slide 1"></button>
+          <button class="carousel-dot" aria-label="Go to slide 2"></button>
+          <button class="carousel-dot" aria-label="Go to slide 3"></button>
+          <button class="carousel-dot" aria-label="Go to slide 4"></button>
+          <button class="carousel-dot" aria-label="Go to slide 5"></button>
+          <button class="carousel-dot" aria-label="Go to slide 6"></button>
         </div>
       </div>
     </div>
-
-    <style>
-      .gallery {
-        padding: 2rem 0;
-        background: #f8f9fa;
-      }
-
-      .gallery-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-        padding: 1rem;
-      }
-
-      .gallery-item {
-        background: white;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        position: relative;
-      }
-
-      .gallery-item img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-        display: block;
-        background: #f0f0f0;
-        transition: opacity 0.3s ease;
-      }
-
-      .gallery-item img.loading {
-        opacity: 0;
-      }
-
-      .gallery-item img.loaded {
-        opacity: 1;
-      }
-
-      .gallery-caption {
-        padding: 1rem;
-        background: #333;
-        color: white;
-      }
-
-      .gallery-caption h3 {
-        margin: 0;
-        font-size: 1rem;
-        color: #ffc107;
-      }
-
-      .gallery-caption p {
-        margin: 0.5rem 0 0;
-        font-size: 0.9rem;
-        opacity: 0.9;
-      }
-
-      /* Desktop styles */
-      @media (min-width: 768px) {
-        .gallery-grid {
-          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-          gap: 1.5rem;
-          padding: 1.5rem;
-        }
-
-        .gallery-item img {
-          height: 250px;
-        }
-
-        .gallery-item {
-          transition: transform 0.3s ease;
-        }
-
-        .gallery-item:hover {
-          transform: translateY(-5px);
-        }
-
-        .gallery-caption h3 {
-          font-size: 1.1rem;
-        }
-      }
-    </style>
-
-    <script>
-      document.addEventListener('DOMContentLoaded', function() {
-        const images = document.querySelectorAll('.gallery-item img');
-        
-        images.forEach(img => {
-          img.classList.add('loading');
-          
-          if (img.complete) {
-            img.classList.remove('loading');
-            img.classList.add('loaded');
-          } else {
-            img.addEventListener('load', function() {
-              img.classList.remove('loading');
-              img.classList.add('loaded');
-            });
-          }
-        });
-      });
-    </script>
   </section>
 
   <!-- Services Section -->
@@ -696,6 +594,18 @@
       text-align: center;
     }
 
+    .carousel-caption h3 {
+      margin: 0;
+      font-size: 1.5rem;
+      color: #ffc107;
+    }
+
+    .carousel-caption p {
+      margin: 0.5rem 0 0;
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+
     .carousel-nav {
       position: absolute;
       top: 50%;
@@ -703,6 +613,7 @@
       width: 40px;
       height: 40px;
       background: rgba(255, 255, 255, 0.8);
+      border: none;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -736,6 +647,7 @@
       height: 10px;
       border-radius: 50%;
       background: #ccc;
+      border: none;
       cursor: pointer;
       transition: background-color 0.3s;
     }
@@ -755,17 +667,15 @@
       }
 
       .carousel-caption h3 {
-        font-size: 1rem;
-        margin: 0;
+        font-size: 1.2rem;
       }
 
       .carousel-caption p {
-        font-size: 0.8rem;
-        margin: 0.2rem 0 0;
+        font-size: 0.9rem;
       }
 
       .carousel-slide img {
-        max-height: 400px; /* Smaller height on mobile */
+        max-height: 400px;
       }
     }
   </style>

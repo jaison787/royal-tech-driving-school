@@ -183,4 +183,55 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     window.addEventListener('scroll', highlightNavigation);
+
+    // Carousel functionality
+    const carousel = document.querySelector('.carousel');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const prevButton = document.querySelector('.carousel-nav.prev');
+    const nextButton = document.querySelector('.carousel-nav.next');
+    
+    let currentSlide = 0;
+    const slideCount = slides.length;
+    
+    // Function to update the carousel state
+    function updateCarousel() {
+        carousel.scrollTo({
+            left: slides[currentSlide].offsetLeft,
+            behavior: 'smooth'
+        });
+        
+        // Update dots
+        dots.forEach((dot, index) => {
+            dot.classList.toggle('active', index === currentSlide);
+        });
+    }
+    
+    // Event listeners for navigation buttons
+    prevButton.addEventListener('click', () => {
+        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+        updateCarousel();
+    });
+    
+    nextButton.addEventListener('click', () => {
+        currentSlide = (currentSlide + 1) % slideCount;
+        updateCarousel();
+    });
+    
+    // Event listeners for dots
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            currentSlide = index;
+            updateCarousel();
+        });
+    });
+    
+    // Auto-advance slides every 5 seconds
+    setInterval(() => {
+        currentSlide = (currentSlide + 1) % slideCount;
+        updateCarousel();
+    }, 5000);
+    
+    // Initialize carousel
+    updateCarousel();
 });
