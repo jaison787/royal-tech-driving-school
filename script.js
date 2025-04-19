@@ -226,6 +226,8 @@ document.addEventListener('DOMContentLoaded', function () {
     const nextButton = document.querySelector('.carousel-nav.next');
     const dots = document.querySelectorAll('.carousel-dot');
     
+    console.log('Total slides:', slides.length); // Debug: Check number of slides
+    
     let currentSlide = 0;
     let isDragging = false;
     let startPos = 0;
@@ -235,9 +237,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Initialize carousel
     function initializeCarousel() {
+        console.log('Initializing carousel...'); // Debug: Check initialization
         // Set initial positions
         slides.forEach((slide, index) => {
+            console.log(`Setting position for slide ${index}`); // Debug: Check each slide
             slide.style.transform = `translateX(${index * 100}%)`;
+            slide.style.position = 'absolute'; // Add this to ensure proper stacking
+            slide.style.left = '0';
+            slide.style.top = '0';
+            slide.style.width = '100%';
+            slide.style.height = '100%';
         });
         
         // Show first slide
@@ -301,6 +310,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function setPositionByIndex() {
+        console.log(`Setting position for slide ${currentSlide}`); // Debug: Check current slide
         currentTranslate = currentSlide * -window.innerWidth;
         prevTranslate = currentTranslate;
         setCarouselPosition();
@@ -308,6 +318,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     function setCarouselPosition() {
+        console.log(`Translating carousel to ${currentTranslate}px`); // Debug: Check translation
         carousel.style.transform = `translateX(${currentTranslate}px)`;
     }
 

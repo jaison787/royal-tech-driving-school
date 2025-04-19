@@ -111,71 +111,53 @@
       <h2>Gallery</h2>
       <p class="section-subtitle">Take a look at our facilities and happy students</p>
       
-      <div class="carousel-container">
-        <div class="carousel">
-          <div class="carousel-slide">
-            <img src="images/gallery/student-driving.jpg" alt="Student Learning to Drive" width="800" height="600">
-            <div class="carousel-caption">
-              <h3>Professional Training</h3>
-              <p>Expert instructors teaching safe driving practices</p>
-            </div>
-          </div>
-          
-          <div class="carousel-slide">
-            <img src="images/gallery/classroom.jpg" alt="Classroom Training" width="800" height="600">
-            <div class="carousel-caption">
-              <h3>Classroom Sessions</h3>
-              <p>Comprehensive theoretical training</p>
-            </div>
-          </div>
-          
-          <div class="carousel-slide">
-            <img src="images/gallery/car-fleet.jpg" alt="Our Car Fleet" width="800" height="600">
-            <div class="carousel-caption">
-              <h3>Modern Fleet</h3>
-              <p>Well-maintained training vehicles</p>
-            </div>
-          </div>
-          
-          <div class="carousel-slide">
-            <img src="images/gallery/success.jpg" alt="Successful Students" width="800" height="600">
-            <div class="carousel-caption">
-              <h3>Success Stories</h3>
-              <p>Our proud graduates</p>
-            </div>
-          </div>
-          
-          <div class="carousel-slide">
-            <img src="images/gallery/simulation.jpg" alt="Driving Simulation" width="800" height="600">
-            <div class="carousel-caption">
-              <h3>Advanced Training</h3>
-              <p>State-of-the-art simulation equipment</p>
-            </div>
-          </div>
-          
-          <div class="carousel-slide">
-            <img src="images/gallery/certificate.jpg" alt="Certification" width="800" height="600">
-            <div class="carousel-caption">
-              <h3>Certification</h3>
-              <p>Internationally recognized certifications</p>
-            </div>
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="./images/gallery/student-driving.jpg" alt="Student Learning to Drive" width="800" height="600">
+          <div class="gallery-caption">
+            <h3>Professional Training</h3>
+            <p>Expert instructors teaching safe driving practices</p>
           </div>
         </div>
         
-        <button class="carousel-nav prev" aria-label="Previous slide">
-          <i class="fas fa-chevron-left"></i>
-        </button>
-        <button class="carousel-nav next" aria-label="Next slide">
-          <i class="fas fa-chevron-right"></i>
-        </button>
+        <div class="gallery-item">
+          <img src="./images/gallery/classroom.jpg" alt="Classroom Training" width="800" height="600">
+          <div class="gallery-caption">
+            <h3>Classroom Sessions</h3>
+            <p>Comprehensive theoretical training</p>
+          </div>
+        </div>
         
-        <div class="carousel-dots">
-          <button class="carousel-dot active" aria-label="Go to slide 1"></button>
-          <button class="carousel-dot" aria-label="Go to slide 2"></button>
-          <button class="carousel-dot" aria-label="Go to slide 3"></button>
-          <button class="carousel-dot" aria-label="Go to slide 4"></button>
-          <button class="carousel-dot" aria-label="Go to slide 5"></button>
-          <button class="carousel-dot" aria-label="Go to slide 6"></button>
+        <div class="gallery-item">
+          <img src="./images/gallery/car-fleet.jpg" alt="Our Car Fleet" width="800" height="600">
+          <div class="gallery-caption">
+            <h3>Modern Fleet</h3>
+            <p>Well-maintained training vehicles</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="./images/gallery/success.jpg" alt="Successful Students" width="800" height="600">
+          <div class="gallery-caption">
+            <h3>Success Stories</h3>
+            <p>Our proud graduates</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="./images/gallery/simulation.jpg" alt="Driving Simulation" width="800" height="600">
+          <div class="gallery-caption">
+            <h3>Advanced Training</h3>
+            <p>State-of-the-art simulation equipment</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="./images/gallery/certificate.jpg" alt="Certification" width="800" height="600">
+          <div class="gallery-caption">
+            <h3>Certification</h3>
+            <p>Internationally recognized certifications</p>
+          </div>
         </div>
       </div>
     </div>
@@ -721,146 +703,52 @@
       background: rgba(0, 0, 0, 0.7);
     }
 
-    .carousel-container {
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-item {
       position: relative;
-      max-width: 100%;
       overflow: hidden;
-      margin: 2rem auto;
-      -webkit-overflow-scrolling: touch;
-      touch-action: pan-x;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
 
-    .carousel {
-      display: flex;
-      transition: transform 0.3s ease-out;
-      will-change: transform;
-      touch-action: pan-x;
-      -webkit-overflow-scrolling: touch;
+    .gallery-item img {
       width: 100%;
-      height: 100%;
-    }
-
-    .carousel.grabbing {
-      cursor: grabbing;
-      user-select: none;
-    }
-
-    .carousel-slide {
-      flex: 0 0 100%;
-      position: relative;
-      min-height: 250px;
-      background-color: #f0f0f0;
-      width: 100%;
-      height: 100%;
-      user-select: none;
-      -webkit-user-select: none;
-      -webkit-touch-callout: none;
-      overflow: hidden;
-    }
-
-    .carousel-slide img {
-      width: 100%;
-      height: 100%;
+      height: 300px;
       object-fit: cover;
       display: block;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      transform: translateZ(0);
-      will-change: transform;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      user-select: none;
     }
 
-    .carousel-caption {
+    .gallery-caption {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
       color: white;
       padding: 1rem;
-      text-align: center;
-      z-index: 2;
-      pointer-events: none;
     }
 
-    .carousel-nav {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      background: rgba(255, 255, 255, 0.8);
-      border: none;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 10;
-      transition: background-color 0.3s;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
+    .gallery-caption h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #ffc107;
     }
 
-    .carousel-nav:hover {
-      background: white;
-    }
-
-    .carousel-nav.prev {
-      left: 1rem;
-    }
-
-    .carousel-nav.next {
-      right: 1rem;
-    }
-
-    .carousel-dots {
-      display: flex;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-top: 1rem;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-    }
-
-    .carousel-dot {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #ccc;
-      border: none;
-      cursor: pointer;
-      transition: background-color 0.3s;
-      -webkit-tap-highlight-color: transparent;
-      touch-action: manipulation;
-    }
-
-    .carousel-dot.active {
-      background: #ffc107;
+    .gallery-caption p {
+      margin: 0.5rem 0 0;
+      font-size: 0.9rem;
+      opacity: 0.9;
     }
 
     @media (max-width: 768px) {
-      .carousel-nav {
-        width: 30px;
-        height: 30px;
-      }
-
-      .carousel-caption {
-        padding: 0.5rem;
-      }
-
-      .carousel-caption h3 {
-        font-size: 1.2rem;
-      }
-
-      .carousel-caption p {
-        font-size: 0.9rem;
-      }
-
-      .carousel-slide {
-        min-height: 200px;
+      .gallery-grid {
+        grid-template-columns: 1fr;
       }
     }
 
