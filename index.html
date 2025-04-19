@@ -547,15 +547,144 @@
   <section id="contact" class="contact">
     <div class="container">
       <h2>Contact Us</h2>
-      <p class="section-subtitle">Book your lessons today!</p>
-      <form class="contact-form">
-        <input type="text" placeholder="Your Name" required />
-        <input type="email" placeholder="Your Email" required />
-        <textarea placeholder="Your Message" required></textarea>
-        <button type="submit" class="cta-button">Send Message</button>
-      </form>
+      <p class="section-subtitle">Get in touch with us today!</p>
+      
+      <div class="contact-grid">
+        <!-- Direct Contact Info -->
+        <div class="contact-info">
+          <div class="contact-card">
+            <i class="fas fa-phone"></i>
+            <h3>Call Us</h3>
+            <p><a href="tel:+919846983399">+91 98469 83399</a></p>
+            <p><a href="tel:+919846983499">+91 98469 83499</a></p>
+          </div>
+          
+          <div class="contact-card">
+            <i class="fab fa-whatsapp"></i>
+            <h3>WhatsApp</h3>
+            <p><a href="https://wa.me/919846983399" target="_blank" class="whatsapp-link">
+              <i class="fab fa-whatsapp"></i> Chat on WhatsApp
+            </a></p>
+          </div>
+
+          <div class="contact-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <h3>Visit Us</h3>
+            <p>Royal-Tech Driving School</p>
+            <p>Pazhanji, Chirakkal</p>
+            <p>Kerala, India</p>
+          </div>
+        </div>
+
+        <!-- Contact Form -->
+        <div class="contact-form-container">
+          <form class="contact-form">
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <input type="tel" placeholder="Your Phone Number" required />
+            <select name="course" required>
+              <option value="">Select Course</option>
+              <option value="lmv">LMV (Light Motor Vehicle)</option>
+              <option value="lmv-ladies">LMV (Ladies)</option>
+              <option value="mc">Motorcycle</option>
+              <option value="lmv-mc">LMV + Motorcycle</option>
+              <option value="endorsement">LMV Endorsement</option>
+            </select>
+            <textarea placeholder="Your Message" required></textarea>
+            <button type="submit" class="cta-button">Send Message</button>
+          </form>
+        </div>
+      </div>
     </div>
   </section>
+
+  <style>
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .contact-card {
+      background: #f8f9fa;
+      padding: 1.5rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+      text-align: center;
+    }
+
+    .contact-card i {
+      font-size: 2rem;
+      color: #ffc107;
+      margin-bottom: 1rem;
+    }
+
+    .contact-card a {
+      color: #333;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .contact-card a:hover {
+      color: #ffc107;
+    }
+
+    .whatsapp-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #25d366;
+      color: white !important;
+      padding: 0.75rem 1.5rem;
+      border-radius: 25px;
+      text-decoration: none;
+      transition: background-color 0.3s ease;
+    }
+
+    .whatsapp-link:hover {
+      background: #128c7e;
+      color: white !important;
+    }
+
+    .contact-form-container {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .contact-form input,
+    .contact-form select,
+    .contact-form textarea {
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      font-size: 1rem;
+    }
+
+    .contact-form textarea {
+      min-height: 150px;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 
   <!-- Footer -->
   <footer class="footer">
