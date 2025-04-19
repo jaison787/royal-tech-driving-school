@@ -186,37 +186,38 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Image loading handling
     const images = document.querySelectorAll('.carousel-slide img');
-    let loadedImages = 0;
+    const placeholders = document.querySelectorAll('.loading-placeholder');
     
-    function loadImage(img) {
-        return new Promise((resolve, reject) => {
-            const image = new Image();
-            
-            image.onload = () => {
-                img.classList.remove('loading');
+    function loadImage(img, placeholder) {
+        return new Promise((resolve) => {
+            // Check if image is already loaded
+            if (img.complete && img.naturalWidth > 0) {
                 img.classList.add('loaded');
-                loadedImages++;
+                placeholder.style.display = 'none';
+                resolve();
+                return;
+            }
+
+            img.onload = () => {
+                img.classList.add('loaded');
+                placeholder.style.display = 'none';
                 resolve();
             };
-            
-            image.onerror = () => {
+
+            img.onerror = () => {
                 console.error('Failed to load image:', img.src);
-                img.classList.remove('loading');
-                reject();
+                placeholder.style.display = 'none';
+                resolve(); // Still resolve to allow carousel to function
             };
-            
-            image.src = img.src;
         });
     }
 
     // Load all images
-    Promise.all(Array.from(images).map(loadImage))
-        .then(() => {
-            console.log('All images loaded successfully');
-        })
-        .catch(error => {
-            console.error('Error loading images:', error);
-        });
+    Promise.all(Array.from(images).map((img, index) => 
+        loadImage(img, placeholders[index])
+    )).then(() => {
+        console.log('All images loaded');
+    });
 
     // Carousel functionality
     const carousel = document.querySelector('.carousel');
