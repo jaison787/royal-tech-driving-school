@@ -432,6 +432,7 @@
     const nextBtn = document.querySelector('.carousel-nav.next');
     
     let currentSlide = 0;
+    const totalSlides = slides.length;
     const slideWidth = carousel.clientWidth / Math.min(3, slides.length);
     
     // Initialize dots
@@ -439,23 +440,33 @@
     
     // Previous button click
     prevBtn.addEventListener('click', () => {
-      currentSlide = Math.max(currentSlide - 1, 0);
-      updateCarousel();
+      goToSlide(currentSlide - 1);
     });
     
     // Next button click
     nextBtn.addEventListener('click', () => {
-      currentSlide = Math.min(currentSlide + 1, slides.length - 3);
-      updateCarousel();
+      goToSlide(currentSlide + 1);
     });
     
     // Dot navigation
     dots.forEach((dot, index) => {
       dot.addEventListener('click', () => {
-        currentSlide = Math.min(index, slides.length - 3);
-        updateCarousel();
+        goToSlide(index);
       });
     });
+    
+    // Go to specific slide
+    function goToSlide(index) {
+      // Handle circular navigation
+      if (index < 0) {
+        index = totalSlides - 3;
+      } else if (index > totalSlides - 3) {
+        index = 0;
+      }
+      
+      currentSlide = index;
+      updateCarousel();
+    }
     
     // Update carousel position
     function updateCarousel() {
@@ -479,11 +490,13 @@
     
     carousel.addEventListener('touchstart', e => {
       touchStartX = e.changedTouches[0].screenX;
+      stopAutoplay(); // Pause on touch
     });
     
     carousel.addEventListener('touchend', e => {
       touchEndX = e.changedTouches[0].screenX;
       handleSwipe();
+      startAutoplay(); // Resume after touch
     });
     
     function handleSwipe() {
@@ -493,12 +506,11 @@
       if (Math.abs(diff) > swipeThreshold) {
         if (diff > 0) {
           // Swipe left
-          currentSlide = Math.min(currentSlide + 1, slides.length - 3);
+          goToSlide(currentSlide + 1);
         } else {
           // Swipe right
-          currentSlide = Math.max(currentSlide - 1, 0);
+          goToSlide(currentSlide - 1);
         }
-        updateCarousel();
       }
     }
     
@@ -506,22 +518,33 @@
     let autoplayInterval;
     
     function startAutoplay() {
+      stopAutoplay(); // Clear any existing interval
       autoplayInterval = setInterval(() => {
-        currentSlide = (currentSlide + 1) % (slides.length - 2);
-        updateCarousel();
-      }, 5000); // Change slide every 5 seconds
+        goToSlide(currentSlide + 1);
+      }, 3000); // Change slide every 3 seconds
     }
     
     function stopAutoplay() {
-      clearInterval(autoplayInterval);
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval);
+      }
     }
     
-    // Start autoplay
+    // Start autoplay immediately
     startAutoplay();
     
     // Pause autoplay on hover
     carousel.addEventListener('mouseenter', stopAutoplay);
     carousel.addEventListener('mouseleave', startAutoplay);
+    
+    // Pause when the page is not visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    });
   });
   </script>
 
