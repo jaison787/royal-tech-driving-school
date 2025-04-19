@@ -186,25 +186,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Image loading handling
     const images = document.querySelectorAll('.carousel-slide img');
+    let loadedImages = 0;
     
-    images.forEach(img => {
-        img.classList.add('loading');
-        
-        // Create a new image object to preload
-        const preloadImage = new Image();
-        preloadImage.src = img.src;
-        
-        preloadImage.onload = function() {
-            img.classList.remove('loading');
-            img.classList.add('loaded');
-        };
-        
-        preloadImage.onerror = function() {
-            console.error('Failed to load image:', img.src);
-            img.classList.remove('loading');
-            // You can add a fallback image here if needed
-        };
-    });
+    function loadImage(img) {
+        return new Promise((resolve, reject) => {
+            const image = new Image();
+            
+            image.onload = () => {
+                img.classList.remove('loading');
+                img.classList.add('loaded');
+                loadedImages++;
+                resolve();
+            };
+            
+            image.onerror = () => {
+                console.error('Failed to load image:', img.src);
+                img.classList.remove('loading');
+                reject();
+            };
+            
+            image.src = img.src;
+        });
+    }
+
+    // Load all images
+    Promise.all(Array.from(images).map(loadImage))
+        .then(() => {
+            console.log('All images loaded successfully');
+        })
+        .catch(error => {
+            console.error('Error loading images:', error);
+        });
 
     // Carousel functionality
     const carousel = document.querySelector('.carousel');

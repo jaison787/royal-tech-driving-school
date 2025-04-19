@@ -13,10 +13,13 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
   />
-  <!-- Preload important images -->
+  <!-- Preload all gallery images -->
   <link rel="preload" href="images/gallery/student-driving.jpg" as="image">
   <link rel="preload" href="images/gallery/classroom.jpg" as="image">
   <link rel="preload" href="images/gallery/car-fleet.jpg" as="image">
+  <link rel="preload" href="images/gallery/success.jpg" as="image">
+  <link rel="preload" href="images/gallery/simulation.jpg" as="image">
+  <link rel="preload" href="images/gallery/certificate.jpg" as="image">
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -118,7 +121,7 @@
       <div class="carousel-container">
         <div class="carousel">
           <div class="carousel-slide">
-            <img src="images/gallery/student-driving.jpg" alt="Student Learning to Drive" loading="eager" width="800" height="600">
+            <img src="./images/gallery/student-driving.jpg" alt="Student Learning to Drive" loading="eager" width="800" height="600">
             <div class="carousel-caption">
               <h3>Professional Training</h3>
               <p>Expert instructors teaching safe driving practices</p>
@@ -126,7 +129,7 @@
           </div>
           
           <div class="carousel-slide">
-            <img src="images/gallery/classroom.jpg" alt="Classroom Training" loading="eager" width="800" height="600">
+            <img src="./images/gallery/classroom.jpg" alt="Classroom Training" loading="eager" width="800" height="600">
             <div class="carousel-caption">
               <h3>Classroom Sessions</h3>
               <p>Comprehensive theoretical training</p>
@@ -134,7 +137,7 @@
           </div>
           
           <div class="carousel-slide">
-            <img src="images/gallery/car-fleet.jpg" alt="Our Car Fleet" loading="eager" width="800" height="600">
+            <img src="./images/gallery/car-fleet.jpg" alt="Our Car Fleet" loading="eager" width="800" height="600">
             <div class="carousel-caption">
               <h3>Modern Fleet</h3>
               <p>Well-maintained training vehicles</p>
@@ -142,7 +145,7 @@
           </div>
           
           <div class="carousel-slide">
-            <img src="images/gallery/success.jpg" alt="Successful Students" loading="eager" width="800" height="600">
+            <img src="./images/gallery/success.jpg" alt="Successful Students" loading="eager" width="800" height="600">
             <div class="carousel-caption">
               <h3>Success Stories</h3>
               <p>Our proud graduates</p>
@@ -150,7 +153,7 @@
           </div>
           
           <div class="carousel-slide">
-            <img src="images/gallery/simulation.jpg" alt="Driving Simulation" loading="eager" width="800" height="600">
+            <img src="./images/gallery/simulation.jpg" alt="Driving Simulation" loading="eager" width="800" height="600">
             <div class="carousel-caption">
               <h3>Advanced Training</h3>
               <p>State-of-the-art simulation equipment</p>
@@ -158,7 +161,7 @@
           </div>
           
           <div class="carousel-slide">
-            <img src="images/gallery/certificate.jpg" alt="Certification" loading="eager" width="800" height="600">
+            <img src="./images/gallery/certificate.jpg" alt="Certification" loading="eager" width="800" height="600">
             <div class="carousel-caption">
               <h3>Certification</h3>
               <p>Internationally recognized certifications</p>
@@ -760,6 +763,9 @@
       -webkit-user-select: none;
       -webkit-touch-callout: none;
       overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .carousel-slide img {
@@ -776,6 +782,9 @@
       user-select: none;
       background-color: #f0f0f0;
       transition: opacity 0.3s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
 
     .carousel-slide img.loading {
