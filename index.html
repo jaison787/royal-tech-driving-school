@@ -13,13 +13,6 @@
     href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
   />
-  <!-- Preload all gallery images -->
-  <link rel="preload" href="images/gallery/student-driving.jpg" as="image">
-  <link rel="preload" href="images/gallery/classroom.jpg" as="image">
-  <link rel="preload" href="images/gallery/car-fleet.jpg" as="image">
-  <link rel="preload" href="images/gallery/success.jpg" as="image">
-  <link rel="preload" href="images/gallery/simulation.jpg" as="image">
-  <link rel="preload" href="images/gallery/certificate.jpg" as="image">
   <script src="script.js" defer></script>
 </head>
 <body>
@@ -121,10 +114,7 @@
       <div class="carousel-container">
         <div class="carousel">
           <div class="carousel-slide">
-            <div class="slide-image-container">
-              <img src="images/gallery/student-driving.jpg" alt="Student Learning to Drive" width="800" height="600">
-              <div class="loading-placeholder"></div>
-            </div>
+            <img src="/images/gallery/student-driving.jpg" alt="Student Learning to Drive" width="800" height="600">
             <div class="carousel-caption">
               <h3>Professional Training</h3>
               <p>Expert instructors teaching safe driving practices</p>
@@ -132,10 +122,7 @@
           </div>
           
           <div class="carousel-slide">
-            <div class="slide-image-container">
-              <img src="images/gallery/classroom.jpg" alt="Classroom Training" width="800" height="600">
-              <div class="loading-placeholder"></div>
-            </div>
+            <img src="/images/gallery/classroom.jpg" alt="Classroom Training" width="800" height="600">
             <div class="carousel-caption">
               <h3>Classroom Sessions</h3>
               <p>Comprehensive theoretical training</p>
@@ -143,10 +130,7 @@
           </div>
           
           <div class="carousel-slide">
-            <div class="slide-image-container">
-              <img src="images/gallery/car-fleet.jpg" alt="Our Car Fleet" width="800" height="600">
-              <div class="loading-placeholder"></div>
-            </div>
+            <img src="/images/gallery/car-fleet.jpg" alt="Our Car Fleet" width="800" height="600">
             <div class="carousel-caption">
               <h3>Modern Fleet</h3>
               <p>Well-maintained training vehicles</p>
@@ -154,10 +138,7 @@
           </div>
           
           <div class="carousel-slide">
-            <div class="slide-image-container">
-              <img src="images/gallery/success.jpg" alt="Successful Students" width="800" height="600">
-              <div class="loading-placeholder"></div>
-            </div>
+            <img src="/images/gallery/success.jpg" alt="Successful Students" width="800" height="600">
             <div class="carousel-caption">
               <h3>Success Stories</h3>
               <p>Our proud graduates</p>
@@ -165,10 +146,7 @@
           </div>
           
           <div class="carousel-slide">
-            <div class="slide-image-container">
-              <img src="images/gallery/simulation.jpg" alt="Driving Simulation" width="800" height="600">
-              <div class="loading-placeholder"></div>
-            </div>
+            <img src="/images/gallery/simulation.jpg" alt="Driving Simulation" width="800" height="600">
             <div class="carousel-caption">
               <h3>Advanced Training</h3>
               <p>State-of-the-art simulation equipment</p>
@@ -176,10 +154,7 @@
           </div>
           
           <div class="carousel-slide">
-            <div class="slide-image-container">
-              <img src="images/gallery/certificate.jpg" alt="Certification" width="800" height="600">
-              <div class="loading-placeholder"></div>
-            </div>
+            <img src="/images/gallery/certificate.jpg" alt="Certification" width="800" height="600">
             <div class="carousel-caption">
               <h3>Certification</h3>
               <p>Internationally recognized certifications</p>
@@ -783,11 +758,18 @@
       overflow: hidden;
     }
 
-    .slide-image-container {
-      position: relative;
+    .carousel-slide img {
       width: 100%;
       height: 100%;
-      min-height: 250px;
+      object-fit: cover;
+      display: block;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      transform: translateZ(0);
+      will-change: transform;
+      -webkit-touch-callout: none;
+      -webkit-user-select: none;
+      user-select: none;
     }
 
     .loading-placeholder {
@@ -800,30 +782,6 @@
       background-size: 200% 100%;
       animation: shimmer 1.5s infinite;
       z-index: 1;
-    }
-
-    .carousel-slide img {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      transform: translateZ(0);
-      will-change: transform;
-      -webkit-touch-callout: none;
-      -webkit-user-select: none;
-      user-select: none;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 2;
-    }
-
-    .carousel-slide img.loaded {
-      opacity: 1;
     }
 
     .carousel-caption {
@@ -929,8 +887,7 @@
         font-size: 0.9rem;
       }
 
-      .carousel-slide,
-      .slide-image-container {
+      .carousel-slide {
         min-height: 200px;
       }
       
