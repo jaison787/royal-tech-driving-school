@@ -187,114 +187,134 @@ document.addEventListener('DOMContentLoaded', function () {
     // Carousel functionality
     const carousel = document.querySelector('.carousel');
     const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.carousel-dot');
     const prevButton = document.querySelector('.carousel-nav.prev');
     const nextButton = document.querySelector('.carousel-nav.next');
+    const dots = document.querySelectorAll('.carousel-dot');
     
     let currentSlide = 0;
-    const slideCount = slides.length;
-    let autoAdvanceInterval;
-    
-    // Preload images
-    function preloadImages() {
-        slides.forEach(slide => {
-            const img = slide.querySelector('img');
-            if (img) {
-                img.classList.add('loading');
-                const image = new Image();
-                image.src = img.src;
-                image.onload = () => {
-                    img.classList.remove('loading');
-                };
-                image.onerror = () => {
-                    img.classList.remove('loading');
-                    console.error('Failed to load image:', img.src);
-                };
-            }
-        });
-    }
-    
-    // Function to update the carousel state
-    function updateCarousel() {
-        const scrollPosition = slides[currentSlide].offsetLeft;
-        carousel.scrollTo({
-            left: scrollPosition,
-            behavior: 'smooth'
-        });
+    let isDragging = false;
+    let startPos = 0;
+    let currentTranslate = 0;
+    let prevTranslate = 0;
+    let animationID = 0;
+
+    // Touch events
+    slides.forEach((slide, index) => {
+        // Touch events
+        slide.addEventListener('touchstart', touchStart(index));
+        slide.addEventListener('touchmove', touchMove);
+        slide.addEventListener('touchend', touchEnd);
         
-        // Update dots
+        // Mouse events
+        slide.addEventListener('mousedown', touchStart(index));
+        slide.addEventListener('mousemove', touchMove);
+        slide.addEventListener('mouseup', touchEnd);
+        slide.addEventListener('mouseleave', touchEnd);
+    });
+
+    // Prevent context menu
+    window.oncontextmenu = function(event) {
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+    };
+
+    function touchStart(index) {
+        return function(event) {
+            currentSlide = index;
+            startPos = event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+            isDragging = true;
+            animationID = requestAnimationFrame(animation);
+            carousel.classList.add('grabbing');
+        };
+    }
+
+    function touchMove(event) {
+        if (isDragging) {
+            const currentPosition = event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+            currentTranslate = prevTranslate + currentPosition - startPos;
+        }
+    }
+
+    function touchEnd() {
+        cancelAnimationFrame(animationID);
+        isDragging = false;
+        const movedBy = currentTranslate - prevTranslate;
+
+        if (movedBy < -100 && currentSlide < slides.length - 1) {
+            currentSlide += 1;
+        } else if (movedBy > 100 && currentSlide > 0) {
+            currentSlide -= 1;
+        }
+
+        setPositionByIndex();
+        carousel.classList.remove('grabbing');
+    }
+
+    function animation() {
+        setCarouselPosition();
+        if (isDragging) requestAnimationFrame(animation);
+    }
+
+    function setPositionByIndex() {
+        currentTranslate = currentSlide * -window.innerWidth;
+        prevTranslate = currentTranslate;
+        setCarouselPosition();
+        updateDots();
+    }
+
+    function setCarouselPosition() {
+        carousel.style.transform = `translateX(${currentTranslate}px)`;
+    }
+
+    function updateDots() {
         dots.forEach((dot, index) => {
             dot.classList.toggle('active', index === currentSlide);
         });
     }
-    
-    // Event listeners for navigation buttons
+
+    // Navigation buttons
     prevButton.addEventListener('click', () => {
-        currentSlide = (currentSlide - 1 + slideCount) % slideCount;
-        updateCarousel();
-        resetAutoAdvance();
+        if (currentSlide > 0) {
+            currentSlide--;
+            setPositionByIndex();
+        }
     });
-    
+
     nextButton.addEventListener('click', () => {
-        currentSlide = (currentSlide + 1) % slideCount;
-        updateCarousel();
-        resetAutoAdvance();
+        if (currentSlide < slides.length - 1) {
+            currentSlide++;
+            setPositionByIndex();
+        }
     });
-    
-    // Event listeners for dots
+
+    // Dot navigation
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
             currentSlide = index;
-            updateCarousel();
-            resetAutoAdvance();
+            setPositionByIndex();
         });
     });
-    
-    // Touch events for mobile
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    carousel.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, { passive: true });
-    
-    carousel.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, { passive: true });
-    
-    function handleSwipe() {
-        const swipeThreshold = 50;
-        const diff = touchStartX - touchEndX;
-        
-        if (Math.abs(diff) > swipeThreshold) {
-            if (diff > 0) {
-                // Swipe left
-                currentSlide = (currentSlide + 1) % slideCount;
-            } else {
-                // Swipe right
-                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
-            }
-            updateCarousel();
-            resetAutoAdvance();
+
+    // Auto-advance slides
+    let slideInterval = setInterval(() => {
+        if (!isDragging) {
+            currentSlide = (currentSlide + 1) % slides.length;
+            setPositionByIndex();
         }
-    }
-    
-    // Auto-advance functionality
-    function startAutoAdvance() {
-        autoAdvanceInterval = setInterval(() => {
-            currentSlide = (currentSlide + 1) % slideCount;
-            updateCarousel();
+    }, 5000);
+
+    // Pause auto-advance on hover/touch
+    carousel.addEventListener('mouseenter', () => clearInterval(slideInterval));
+    carousel.addEventListener('mouseleave', () => {
+        slideInterval = setInterval(() => {
+            if (!isDragging) {
+                currentSlide = (currentSlide + 1) % slides.length;
+                setPositionByIndex();
+            }
         }, 5000);
-    }
-    
-    function resetAutoAdvance() {
-        clearInterval(autoAdvanceInterval);
-        startAutoAdvance();
-    }
-    
-    // Initialize carousel
-    preloadImages();
-    updateCarousel();
-    startAutoAdvance();
+    });
+
+    // Initial setup
+    setPositionByIndex();
 });
