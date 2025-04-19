@@ -193,11 +193,32 @@ document.addEventListener('DOMContentLoaded', function () {
     
     let currentSlide = 0;
     const slideCount = slides.length;
+    let autoAdvanceInterval;
+    
+    // Preload images
+    function preloadImages() {
+        slides.forEach(slide => {
+            const img = slide.querySelector('img');
+            if (img) {
+                img.classList.add('loading');
+                const image = new Image();
+                image.src = img.src;
+                image.onload = () => {
+                    img.classList.remove('loading');
+                };
+                image.onerror = () => {
+                    img.classList.remove('loading');
+                    console.error('Failed to load image:', img.src);
+                };
+            }
+        });
+    }
     
     // Function to update the carousel state
     function updateCarousel() {
+        const scrollPosition = slides[currentSlide].offsetLeft;
         carousel.scrollTo({
-            left: slides[currentSlide].offsetLeft,
+            left: scrollPosition,
             behavior: 'smooth'
         });
         
@@ -211,11 +232,13 @@ document.addEventListener('DOMContentLoaded', function () {
     prevButton.addEventListener('click', () => {
         currentSlide = (currentSlide - 1 + slideCount) % slideCount;
         updateCarousel();
+        resetAutoAdvance();
     });
     
     nextButton.addEventListener('click', () => {
         currentSlide = (currentSlide + 1) % slideCount;
         updateCarousel();
+        resetAutoAdvance();
     });
     
     // Event listeners for dots
@@ -223,15 +246,55 @@ document.addEventListener('DOMContentLoaded', function () {
         dot.addEventListener('click', () => {
             currentSlide = index;
             updateCarousel();
+            resetAutoAdvance();
         });
     });
     
-    // Auto-advance slides every 5 seconds
-    setInterval(() => {
-        currentSlide = (currentSlide + 1) % slideCount;
-        updateCarousel();
-    }, 5000);
+    // Touch events for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    carousel.addEventListener('touchstart', (e) => {
+        touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+    
+    carousel.addEventListener('touchend', (e) => {
+        touchEndX = e.changedTouches[0].screenX;
+        handleSwipe();
+    }, { passive: true });
+    
+    function handleSwipe() {
+        const swipeThreshold = 50;
+        const diff = touchStartX - touchEndX;
+        
+        if (Math.abs(diff) > swipeThreshold) {
+            if (diff > 0) {
+                // Swipe left
+                currentSlide = (currentSlide + 1) % slideCount;
+            } else {
+                // Swipe right
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+            }
+            updateCarousel();
+            resetAutoAdvance();
+        }
+    }
+    
+    // Auto-advance functionality
+    function startAutoAdvance() {
+        autoAdvanceInterval = setInterval(() => {
+            currentSlide = (currentSlide + 1) % slideCount;
+            updateCarousel();
+        }, 5000);
+    }
+    
+    function resetAutoAdvance() {
+        clearInterval(autoAdvanceInterval);
+        startAutoAdvance();
+    }
     
     // Initialize carousel
+    preloadImages();
     updateCarousel();
+    startAutoAdvance();
 });
