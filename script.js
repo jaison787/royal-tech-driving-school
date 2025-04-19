@@ -233,6 +233,17 @@ document.addEventListener('DOMContentLoaded', function () {
     let prevTranslate = 0;
     let animationID = 0;
 
+    // Initialize carousel
+    function initializeCarousel() {
+        // Set initial positions
+        slides.forEach((slide, index) => {
+            slide.style.transform = `translateX(${index * 100}%)`;
+        });
+        
+        // Show first slide
+        setPositionByIndex();
+    }
+
     // Touch events
     slides.forEach((slide, index) => {
         // Touch events
@@ -247,43 +258,41 @@ document.addEventListener('DOMContentLoaded', function () {
         slide.addEventListener('mouseleave', touchEnd);
     });
 
-    // Prevent context menu
-    window.oncontextmenu = function(event) {
-        event.preventDefault();
-        event.stopPropagation();
-        return false;
-    };
-
     function touchStart(index) {
         return function(event) {
             currentSlide = index;
-            startPos = event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+            startPos = getPositionX(event);
             isDragging = true;
             animationID = requestAnimationFrame(animation);
             carousel.classList.add('grabbing');
-        };
+        }
     }
 
     function touchMove(event) {
         if (isDragging) {
-            const currentPosition = event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
+            const currentPosition = getPositionX(event);
             currentTranslate = prevTranslate + currentPosition - startPos;
         }
     }
 
     function touchEnd() {
-        cancelAnimationFrame(animationID);
         isDragging = false;
+        cancelAnimationFrame(animationID);
+        
         const movedBy = currentTranslate - prevTranslate;
-
+        
         if (movedBy < -100 && currentSlide < slides.length - 1) {
             currentSlide += 1;
         } else if (movedBy > 100 && currentSlide > 0) {
             currentSlide -= 1;
         }
-
+        
         setPositionByIndex();
         carousel.classList.remove('grabbing');
+    }
+
+    function getPositionX(event) {
+        return event.type.includes('mouse') ? event.pageX : event.touches[0].clientX;
     }
 
     function animation() {
@@ -350,6 +359,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }, 5000);
     });
 
-    // Initial setup
-    setPositionByIndex();
+    // Initialize carousel
+    initializeCarousel();
 });
