@@ -184,6 +184,28 @@ document.addEventListener('DOMContentLoaded', function () {
 
     window.addEventListener('scroll', highlightNavigation);
 
+    // Image loading handling
+    const images = document.querySelectorAll('.carousel-slide img');
+    
+    images.forEach(img => {
+        img.classList.add('loading');
+        
+        // Create a new image object to preload
+        const preloadImage = new Image();
+        preloadImage.src = img.src;
+        
+        preloadImage.onload = function() {
+            img.classList.remove('loading');
+            img.classList.add('loaded');
+        };
+        
+        preloadImage.onerror = function() {
+            console.error('Failed to load image:', img.src);
+            img.classList.remove('loading');
+            // You can add a fallback image here if needed
+        };
+    });
+
     // Carousel functionality
     const carousel = document.querySelector('.carousel');
     const slides = document.querySelectorAll('.carousel-slide');
