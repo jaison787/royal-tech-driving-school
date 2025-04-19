@@ -106,6 +106,216 @@
     </div>
   </section>
 
+  <!-- Gallery Section -->
+  <section id="gallery" class="gallery">
+    <div class="container">
+      <h2>Gallery</h2>
+      <p class="section-subtitle">Take a look at our facilities and happy students</p>
+      
+      <div class="carousel-container">
+        <div class="carousel">
+          <!-- Slide 1 -->
+          <div class="carousel-slide">
+            <img src="images/gallery/student-driving.jpg" alt="Student Learning to Drive">
+            <div class="carousel-caption">
+              <h3>Professional Training</h3>
+              <p>Expert instructors teaching safe driving practices</p>
+            </div>
+          </div>
+          
+          <!-- Slide 2 -->
+          <div class="carousel-slide">
+            <img src="images/gallery/classroom.jpg" alt="Classroom Training">
+            <div class="carousel-caption">
+              <h3>Classroom Sessions</h3>
+              <p>Comprehensive theoretical training</p>
+            </div>
+          </div>
+          
+          <!-- Slide 3 -->
+          <div class="carousel-slide">
+            <img src="images/gallery/car-fleet.jpg" alt="Our Car Fleet">
+            <div class="carousel-caption">
+              <h3>Modern Fleet</h3>
+              <p>Well-maintained training vehicles</p>
+            </div>
+          </div>
+          
+          <!-- Slide 4 -->
+          <div class="carousel-slide">
+            <img src="images/gallery/success.jpg" alt="Successful Students">
+            <div class="carousel-caption">
+              <h3>Success Stories</h3>
+              <p>Our proud graduates</p>
+            </div>
+          </div>
+          
+          <!-- Slide 5 -->
+          <div class="carousel-slide">
+            <img src="images/gallery/simulation.jpg" alt="Driving Simulation">
+            <div class="carousel-caption">
+              <h3>Advanced Training</h3>
+              <p>State-of-the-art simulation equipment</p>
+            </div>
+          </div>
+          
+          <!-- Slide 6 -->
+          <div class="carousel-slide">
+            <img src="images/gallery/certificate.jpg" alt="Certification">
+            <div class="carousel-caption">
+              <h3>Certification</h3>
+              <p>Internationally recognized certifications</p>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Navigation Arrows -->
+        <div class="carousel-nav prev">
+          <i class="fas fa-chevron-left"></i>
+        </div>
+        <div class="carousel-nav next">
+          <i class="fas fa-chevron-right"></i>
+        </div>
+        
+        <!-- Navigation Dots -->
+        <div class="carousel-dots">
+          <span class="carousel-dot active"></span>
+          <span class="carousel-dot"></span>
+          <span class="carousel-dot"></span>
+          <span class="carousel-dot"></span>
+          <span class="carousel-dot"></span>
+          <span class="carousel-dot"></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add JavaScript for carousel functionality -->
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const carousel = document.querySelector('.carousel');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const dots = document.querySelectorAll('.carousel-dot');
+    const prevBtn = document.querySelector('.carousel-nav.prev');
+    const nextBtn = document.querySelector('.carousel-nav.next');
+    
+    let currentSlide = 0;
+    const totalSlides = slides.length;
+    const slideWidth = carousel.clientWidth / Math.min(3, slides.length);
+    
+    // Initialize dots
+    updateDots();
+    
+    // Previous button click
+    prevBtn.addEventListener('click', () => {
+      goToSlide(currentSlide - 1);
+    });
+    
+    // Next button click
+    nextBtn.addEventListener('click', () => {
+      goToSlide(currentSlide + 1);
+    });
+    
+    // Dot navigation
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        goToSlide(index);
+      });
+    });
+    
+    // Go to specific slide
+    function goToSlide(index) {
+      // Handle circular navigation
+      if (index < 0) {
+        index = totalSlides - 3;
+      } else if (index > totalSlides - 3) {
+        index = 0;
+      }
+      
+      currentSlide = index;
+      updateCarousel();
+    }
+    
+    // Update carousel position
+    function updateCarousel() {
+      carousel.scrollTo({
+        left: currentSlide * slideWidth,
+        behavior: 'smooth'
+      });
+      updateDots();
+    }
+    
+    // Update active dot
+    function updateDots() {
+      dots.forEach((dot, index) => {
+        dot.classList.toggle('active', index === currentSlide);
+      });
+    }
+    
+    // Handle touch events for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+    
+    carousel.addEventListener('touchstart', e => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoplay(); // Pause on touch
+    });
+    
+    carousel.addEventListener('touchend', e => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+      startAutoplay(); // Resume after touch
+    });
+    
+    function handleSwipe() {
+      const swipeThreshold = 50;
+      const diff = touchStartX - touchEndX;
+      
+      if (Math.abs(diff) > swipeThreshold) {
+        if (diff > 0) {
+          // Swipe left
+          goToSlide(currentSlide + 1);
+        } else {
+          // Swipe right
+          goToSlide(currentSlide - 1);
+        }
+      }
+    }
+    
+    // Auto-play functionality
+    let autoplayInterval;
+    
+    function startAutoplay() {
+      stopAutoplay(); // Clear any existing interval
+      autoplayInterval = setInterval(() => {
+        goToSlide(currentSlide + 1);
+      }, 3000); // Change slide every 3 seconds
+    }
+    
+    function stopAutoplay() {
+      if (autoplayInterval) {
+        clearInterval(autoplayInterval);
+      }
+    }
+    
+    // Start autoplay immediately
+    startAutoplay();
+    
+    // Pause autoplay on hover
+    carousel.addEventListener('mouseenter', stopAutoplay);
+    carousel.addEventListener('mouseleave', startAutoplay);
+    
+    // Pause when the page is not visible
+    document.addEventListener('visibilitychange', () => {
+      if (document.hidden) {
+        stopAutoplay();
+      } else {
+        startAutoplay();
+      }
+    });
+  });
+  </script>
+
   <!-- Services Section -->
   <section id="services" class="services">
     <div class="container">
@@ -337,216 +547,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Gallery Section -->
-  <section id="gallery" class="gallery">
-    <div class="container">
-      <h2>Gallery</h2>
-      <p class="section-subtitle">Take a look at our facilities and happy students</p>
-      
-      <div class="carousel-container">
-        <div class="carousel">
-          <!-- Slide 1 -->
-          <div class="carousel-slide">
-            <img src="images/gallery/student-driving.jpg" alt="Student Learning to Drive">
-            <div class="carousel-caption">
-              <h3>Professional Training</h3>
-              <p>Expert instructors teaching safe driving practices</p>
-            </div>
-          </div>
-          
-          <!-- Slide 2 -->
-          <div class="carousel-slide">
-            <img src="images/gallery/classroom.jpg" alt="Classroom Training">
-            <div class="carousel-caption">
-              <h3>Classroom Sessions</h3>
-              <p>Comprehensive theoretical training</p>
-            </div>
-          </div>
-          
-          <!-- Slide 3 -->
-          <div class="carousel-slide">
-            <img src="images/gallery/car-fleet.jpg" alt="Our Car Fleet">
-            <div class="carousel-caption">
-              <h3>Modern Fleet</h3>
-              <p>Well-maintained training vehicles</p>
-            </div>
-          </div>
-          
-          <!-- Slide 4 -->
-          <div class="carousel-slide">
-            <img src="images/gallery/success.jpg" alt="Successful Students">
-            <div class="carousel-caption">
-              <h3>Success Stories</h3>
-              <p>Our proud graduates</p>
-            </div>
-          </div>
-          
-          <!-- Slide 5 -->
-          <div class="carousel-slide">
-            <img src="images/gallery/simulation.jpg" alt="Driving Simulation">
-            <div class="carousel-caption">
-              <h3>Advanced Training</h3>
-              <p>State-of-the-art simulation equipment</p>
-            </div>
-          </div>
-          
-          <!-- Slide 6 -->
-          <div class="carousel-slide">
-            <img src="images/gallery/certificate.jpg" alt="Certification">
-            <div class="carousel-caption">
-              <h3>Certification</h3>
-              <p>Internationally recognized certifications</p>
-            </div>
-          </div>
-        </div>
-        
-        <!-- Navigation Arrows -->
-        <div class="carousel-nav prev">
-          <i class="fas fa-chevron-left"></i>
-        </div>
-        <div class="carousel-nav next">
-          <i class="fas fa-chevron-right"></i>
-        </div>
-        
-        <!-- Navigation Dots -->
-        <div class="carousel-dots">
-          <span class="carousel-dot active"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
-          <span class="carousel-dot"></span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Add JavaScript for carousel functionality -->
-  <script>
-  document.addEventListener('DOMContentLoaded', function() {
-    const carousel = document.querySelector('.carousel');
-    const slides = document.querySelectorAll('.carousel-slide');
-    const dots = document.querySelectorAll('.carousel-dot');
-    const prevBtn = document.querySelector('.carousel-nav.prev');
-    const nextBtn = document.querySelector('.carousel-nav.next');
-    
-    let currentSlide = 0;
-    const totalSlides = slides.length;
-    const slideWidth = carousel.clientWidth / Math.min(3, slides.length);
-    
-    // Initialize dots
-    updateDots();
-    
-    // Previous button click
-    prevBtn.addEventListener('click', () => {
-      goToSlide(currentSlide - 1);
-    });
-    
-    // Next button click
-    nextBtn.addEventListener('click', () => {
-      goToSlide(currentSlide + 1);
-    });
-    
-    // Dot navigation
-    dots.forEach((dot, index) => {
-      dot.addEventListener('click', () => {
-        goToSlide(index);
-      });
-    });
-    
-    // Go to specific slide
-    function goToSlide(index) {
-      // Handle circular navigation
-      if (index < 0) {
-        index = totalSlides - 3;
-      } else if (index > totalSlides - 3) {
-        index = 0;
-      }
-      
-      currentSlide = index;
-      updateCarousel();
-    }
-    
-    // Update carousel position
-    function updateCarousel() {
-      carousel.scrollTo({
-        left: currentSlide * slideWidth,
-        behavior: 'smooth'
-      });
-      updateDots();
-    }
-    
-    // Update active dot
-    function updateDots() {
-      dots.forEach((dot, index) => {
-        dot.classList.toggle('active', index === currentSlide);
-      });
-    }
-    
-    // Handle touch events for mobile
-    let touchStartX = 0;
-    let touchEndX = 0;
-    
-    carousel.addEventListener('touchstart', e => {
-      touchStartX = e.changedTouches[0].screenX;
-      stopAutoplay(); // Pause on touch
-    });
-    
-    carousel.addEventListener('touchend', e => {
-      touchEndX = e.changedTouches[0].screenX;
-      handleSwipe();
-      startAutoplay(); // Resume after touch
-    });
-    
-    function handleSwipe() {
-      const swipeThreshold = 50;
-      const diff = touchStartX - touchEndX;
-      
-      if (Math.abs(diff) > swipeThreshold) {
-        if (diff > 0) {
-          // Swipe left
-          goToSlide(currentSlide + 1);
-        } else {
-          // Swipe right
-          goToSlide(currentSlide - 1);
-        }
-      }
-    }
-    
-    // Auto-play functionality
-    let autoplayInterval;
-    
-    function startAutoplay() {
-      stopAutoplay(); // Clear any existing interval
-      autoplayInterval = setInterval(() => {
-        goToSlide(currentSlide + 1);
-      }, 3000); // Change slide every 3 seconds
-    }
-    
-    function stopAutoplay() {
-      if (autoplayInterval) {
-        clearInterval(autoplayInterval);
-      }
-    }
-    
-    // Start autoplay immediately
-    startAutoplay();
-    
-    // Pause autoplay on hover
-    carousel.addEventListener('mouseenter', stopAutoplay);
-    carousel.addEventListener('mouseleave', startAutoplay);
-    
-    // Pause when the page is not visible
-    document.addEventListener('visibilitychange', () => {
-      if (document.hidden) {
-        stopAutoplay();
-      } else {
-        startAutoplay();
-      }
-    });
-  });
-  </script>
 
   <!-- Contact Section -->
   <section id="contact" class="contact">
