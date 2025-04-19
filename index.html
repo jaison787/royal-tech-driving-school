@@ -113,7 +113,10 @@
       
       <div class="gallery-grid">
         <div class="gallery-item">
-          <img src="./images/gallery/student-driving.jpg" alt="Student Learning to Drive" loading="lazy">
+          <img src="./images/gallery/student-driving.jpg" 
+               alt="Student Learning to Drive" 
+               loading="lazy"
+               onerror="this.onerror=null; this.src='./images/gallery/placeholder.jpg'">
           <div class="gallery-caption">
             <h3>Professional Training</h3>
             <p>Expert instructors teaching safe driving practices</p>
@@ -121,7 +124,10 @@
         </div>
         
         <div class="gallery-item">
-          <img src="./images/gallery/classroom.jpg" alt="Classroom Training" loading="lazy">
+          <img src="./images/gallery/classroom.jpg" 
+               alt="Classroom Training" 
+               loading="lazy"
+               onerror="this.onerror=null; this.src='./images/gallery/placeholder.jpg'">
           <div class="gallery-caption">
             <h3>Classroom Sessions</h3>
             <p>Comprehensive theoretical training</p>
@@ -129,7 +135,10 @@
         </div>
         
         <div class="gallery-item">
-          <img src="./images/gallery/car-fleet.jpg" alt="Our Car Fleet" loading="lazy">
+          <img src="./images/gallery/car-fleet.jpg" 
+               alt="Our Car Fleet" 
+               loading="lazy"
+               onerror="this.onerror=null; this.src='./images/gallery/placeholder.jpg'">
           <div class="gallery-caption">
             <h3>Modern Fleet</h3>
             <p>Well-maintained training vehicles</p>
@@ -137,7 +146,10 @@
         </div>
         
         <div class="gallery-item">
-          <img src="./images/gallery/success.jpg" alt="Successful Students" loading="lazy">
+          <img src="./images/gallery/success.jpg" 
+               alt="Successful Students" 
+               loading="lazy"
+               onerror="this.onerror=null; this.src='./images/gallery/placeholder.jpg'">
           <div class="gallery-caption">
             <h3>Success Stories</h3>
             <p>Our proud graduates</p>
@@ -145,7 +157,10 @@
         </div>
         
         <div class="gallery-item">
-          <img src="./images/gallery/simulation.jpg" alt="Driving Simulation" loading="lazy">
+          <img src="./images/gallery/simulation.jpg" 
+               alt="Driving Simulation" 
+               loading="lazy"
+               onerror="this.onerror=null; this.src='./images/gallery/placeholder.jpg'">
           <div class="gallery-caption">
             <h3>Advanced Training</h3>
             <p>State-of-the-art simulation equipment</p>
@@ -153,7 +168,10 @@
         </div>
         
         <div class="gallery-item">
-          <img src="./images/gallery/certificate.jpg" alt="Certification" loading="lazy">
+          <img src="./images/gallery/certificate.jpg" 
+               alt="Certification" 
+               loading="lazy"
+               onerror="this.onerror=null; this.src='./images/gallery/placeholder.jpg'">
           <div class="gallery-caption">
             <h3>Certification</h3>
             <p>Internationally recognized certifications</p>
@@ -180,6 +198,7 @@
         border-radius: 8px;
         overflow: hidden;
         box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        position: relative;
       }
 
       .gallery-item img {
@@ -187,6 +206,16 @@
         height: 200px;
         object-fit: cover;
         display: block;
+        background: #f0f0f0;
+        transition: opacity 0.3s ease;
+      }
+
+      .gallery-item img.loading {
+        opacity: 0;
+      }
+
+      .gallery-item img.loaded {
+        opacity: 1;
       }
 
       .gallery-caption {
@@ -232,6 +261,26 @@
         }
       }
     </style>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const images = document.querySelectorAll('.gallery-item img');
+        
+        images.forEach(img => {
+          img.classList.add('loading');
+          
+          if (img.complete) {
+            img.classList.remove('loading');
+            img.classList.add('loaded');
+          } else {
+            img.addEventListener('load', function() {
+              img.classList.remove('loading');
+              img.classList.add('loaded');
+            });
+          }
+        });
+      });
+    </script>
   </section>
 
   <!-- Services Section -->
